@@ -40,7 +40,11 @@ public class IterativeParTan implements Optimizer {
 
     @Override
     public Vector<Double> optimize(Function f, Vector<Double> startingPoint) {
-        return null;
+        this.f = f;
+        vars = f.getVarsArray();//Det variables array
+        grad = f.grad();//Gradient of entire function
+        Vector<Double> approx = methodMainAlgorithm(f, startingPoint);
+        return approx;
     }
 
     @Override
